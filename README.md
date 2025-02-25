@@ -19,23 +19,23 @@ https://www.python.org/downloads/
 ### 2️⃣ Create a Virtual Environment
 In the project root directory, run:
 
-&#8226•Windows:
+•Windows:
 ```python -m venv venv```
 
-&#8226•Mac/Linux:
+•Mac/Linux:
 ```python3 -m venv venv```
 
 This will create a folder named `venv` containing the virtual environment.
 
 ### 3️⃣ Activate the Virtual Environment
-&#8226•Windows (Command Prompt):
+•Windows (Command Prompt):
 ```venv\Scripts\activate```
 
-&#8226•Windows (PowerShell):
+•Windows (PowerShell):
 ```venv\Scripts\Activate.ps1```
 *(If you get an error, run this command first: Set-ExecutionPolicy Unrestricted -Scope Process)*
 
-&#8226•Mac/Linux (Terminal):
+•Mac/Linux (Terminal):
 ```source venv/bin/activate```
 
 ### 4️⃣ Install Dependencies
