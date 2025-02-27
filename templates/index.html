@@ -1,28 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<!-- Dynamic Background -->
-<div class="background">
-    <div class="background-layer"></div> <!-- First background layer -->
-    <div class="background-layer"></div> <!-- Second background layer -->
-</div>
 
-<div class="text-center">
-    <div class="title-box">
-        <h1>
-            Witaj w Sawara Gyros
-        </h1>
-        <p>
-            Zapraszamy do naszego menu online
-        </p>
-        <a href="/menu" class="btn btn-primary">
-            Przejdź do menu
-        </a>
-    </div>
-</div>
 
-<!-- Link JavaScript files -->
-{% if background_script %}
-<script src="{{ url_for('static', filename='js/background.js') }}"></script>
 {% endif %}
 {% endblock %}

@@ -3,46 +3,4 @@
 {% block content %}
 
 
-<h1 class="text-center">Nasze Menu</h1>
-
-<div class="background">
-    <div class="background-layer"></div> <!-- First background layer -->
-    <div class="background-layer"></div> <!-- Second background layer -->
-</div>
-
-
-<!-- Filter Buttons -->
-<div class="text-center my-3">
-    <button class="custom-btn filter-btn" data-filter="all">Wszystkie pozycje</button>
-    <button class="custom-btn filter-btn" data-filter="Dania Mięsne">Dania Mięsne</button>
-    <button class="custom-btn filter-btn" data-filter="Pizza">Pizza</button>
-    <button class="custom-btn filter-btn" data-filter="Sfiha">Sfiha</button>
-    <button class="custom-btn filter-btn" data-filter="Wege">Dania Wegetariańskie</button>
-    <button class="custom-btn filter-btn" data-filter="Ryba">Dania Rybne</button>
-    <button class="custom-btn filter-btn" data-filter="Sałatki">Sałatki</button>
-    <button class="custom-btn filter-btn" data-filter="Dodatki">Dodatki</button>
-    <button class="custom-btn filter-btn" data-filter="Desery">Desery</button>
-    <button class="custom-btn filter-btn" data-filter="Napoje">Napoje</button>
-</div>
-
-<!-- Menu Items -->
-<div class="row" id="menu-container">
-    {% for item in menu_items %}
-    <div class="col-md-4 menu-item" data-category="{{ item.category }}">
-        <img src="{{ url_for('static', filename='images/' + item.image) }}" alt="{{ item.name }}">
-        <h5>{{ item.name }}</h5>
-        <p class="price">{{ item.price }}</p>
-         <!-- Opis ukryty na początku -->
-        <div class="desc-container">
-            <p class="desc">{{ item.desc | safe }}</p>
-        </div>
-    </div>
-    {% endfor %}
-</div>
-
-<!-- Link JavaScript files -->
-<script src="{{ url_for('static', filename='js/menu.js') }}"></script>
-{% if background_script %}
-<script src="{{ url_for('static', filename='js/background.js') }}"></script>
-{% endif %}
 {% endblock %}
