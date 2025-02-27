@@ -1,0 +1,119 @@
+.menu-item {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    position: relative;  /* enables correct positioning of z-index */
+    overflow: hidden;    /* prevents of shifting the elements */
+    padding: 15px;
+    background: white;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1;  /* Default z-index */
+}
+
+.menu-item:hover {
+    transform: scale(1.05);
+    background: #ffc1a2b9;
+    z-index: 10;  /* Bring it to the front */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for depth */
+}
+
+/*Hiding the description at the initial stage */
+.menu-item .desc-container {
+    display: none; /* Zamiast bezpośrednio na .desc, ukrywamy cały kontener */
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    bottom: 10px;
+    left: 22px;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 10px;
+    border-radius: 5px;
+    width: 90%;
+    box-sizing: border-box;
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+/* Show the description while hovering the cursor */
+.menu-item:hover .desc-container {
+    display: block;
+}
+
+/* Optional additional styles for lists and tags */
+.menu-item .desc ul {
+    padding-left: 0px;
+    list-style-type: disc;
+    margin: 5px 0;
+}
+
+.menu-item .desc strong {
+    font-weight: bold;
+    color: red; /* highlight */
+}
+
+.menu-item .desc ins {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+
+.menu-item .description {
+    position: absolute; /* find an alternative to absolute*/
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+
+.menu-item img {
+    max-width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    width: auto;
+
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    position: center;
+    z-index: 1; /* prevents from covering the text */
+}
+
+
+.menu-item:hover img {
+
+    transform: scale(1.1);
+    border-radius: 20px;
+    padding: 5px;
+    box-shadow: 0 10px 20px  rgba(0, 0, 0, 0.3); /* adding shadow */
+}
+
+.menu-item:hover .description {
+    opacity: 1;
+    position: center;
+    text-align: center;  /* centering the text */
+}
+
+.menu-item {
+    position: relative;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* making the name of the dish bigger */
+.menu-item h5 {
+    font-size: 1.5em; /* Bigger font's size */
+    font-weight: bold;
+    margin-top: 10px;
+    position: relative;
+    z-index: 2; /* ensurign visibility of the text */
+}
