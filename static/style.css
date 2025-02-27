@@ -40,7 +40,9 @@
     100% { transform: scale(2); }
   }
 
-
+html, body {
+    height: 100%;
+}
 
 body {
     background-color: rgba(253, 182, 88, 0.763); /* Cream-colored background */
@@ -49,39 +51,38 @@ body {
     padding: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Minimalna wysokość strony na 100% */
 }
 
-/* Wrapper – obejmuje całą stronę */
+/* Wrapper – affects whole page */
 .wrapper {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Minimum 100% wysokości ekranu */
-    flex-grow: 1; /* Rozciąga stronę, aby wypełniała całą dostępną przestrzeń */
+    min-height: 100%; /* Minimum 100% height of the screen */
+    flex-grow: 1; /* Stretchning the site, so that it will fill all free space */
 }
 
 main {
-    flex-grow: 1; /* Sprawia, że główny kontener wypełnia dostępną przestrzeń */
+    flex-grow: 1; /* Makes, that main container fills available space */
 }
 
 
 h1 {
-    text-shadow: 2px 2px 5px rgba(255, 255, 255, 1); /* jasny cień */
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 1); /* bright shadow */
 }
 
 
 p {
-    text-shadow: 2px 2px 5px rgba(255, 255, 255, 1); /* jasny cień */
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 1); /*  bright shadow  */
     font-weight: bold;
 }
 
 .title-box {
     display: inline-block;
     padding: 10px 20px;
-    border: 2px solid rgba(30, 144, 255, 0.5); /* Delikatny niebieski */
+    border: 2px solid rgba(30, 144, 255, 0.5); /* subtle blue */
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.2); /* Półprzezroczyste tło */
-    backdrop-filter: blur(5px); /* Subtelne rozmycie tła */
+    background-color: rgba(255, 255, 255, 0.2); /* half-transparent background */
+    backdrop-filter: blur(5px); /*subtle background blurry */
 }
 
 .red-text {
@@ -93,9 +94,9 @@ p {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh; /* Wysokość ekranu */
+    height: 100%;
     overflow: hidden;
-    z-index: -1; /* Tło za wszystkimi innymi elementami */
+    z-index: -1; /*background with all elements */
 }
 
 .background-layer {
@@ -107,35 +108,53 @@ p {
     background-size: cover;
     background-position: center;
     transition: opacity 2s ease-in-out;
-    opacity: 0; /* Początkowo niewidoczne */
-    filter: brightness(1) contrast(1); /* Zapewniamy pełną jasność i kontrast zdjęcia */
+    filter: brightness(1) contrast(1); /* Full brightness and contrast of the image */
+    opacity: 0; /*Initially hidden */
 }
 
 
-/* Warstwa, która jest widoczna */
+/* Visible layer */
 .background-layer.show {
     opacity: 1;
-    z-index: 2; /* Ustawiamy warstwę na widoczną */
+    z-index: 2; /* Setting a layer to visible */
 }
 
-/* Warstwa, która jest ukryta */
+/*Hidden layer */
 .background-layer.hide {
     opacity: 0;
-    z-index: 1; /* Ukrywamy warstwę */
+    z-index: 1; /* hiding the layer */
 }
 
-/* Stylowanie treści */
+/* styling the content */
 .content {
     position: relative;
     z-index: 2;
     text-align: center;
     color: white;
     padding: 20px;
-    flex: 1; /* Rozciąga się, aby wypełnić całą dostępną przestrzeń */
+    flex: 1; 
 }
 
+.menu-item {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    position: relative;  /* enables correct positioning of z-index */
+    overflow: hidden;    /* prevents of shifting the elements */
+    padding: 15px;
+    background: white;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1;  /* Default z-index */
+}
 
-/* Ukrywanie opisu na początku */
+.menu-item:hover {
+    transform: scale(1.05);
+    background: #ffc1a2b9;
+    z-index: 10;  /* Bring it to the front */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for depth */
+}
+
+/*Hiding the description at the initial stage */
 .menu-item .desc-container {
     display: none; /* Zamiast bezpośrednio na .desc, ukrywamy cały kontener */
     position: relative;
@@ -152,12 +171,12 @@ p {
     z-index: 10;
 }
 
-/* Pokaż opis tylko po najechaniu */
+/* Show the description while hovering the cursor */
 .menu-item:hover .desc-container {
     display: block;
 }
 
-/* Opcjonalne dodatkowe style dla list i tagów */
+/* Optional additional styles for lists and tags */
 .menu-item .desc ul {
     padding-left: 0px;
     list-style-type: disc;
@@ -166,7 +185,7 @@ p {
 
 .menu-item .desc strong {
     font-weight: bold;
-    color: red; /* Wyróżnienie */
+    color: red; /* highlight */
 }
 
 .menu-item .desc ins {
@@ -176,8 +195,8 @@ p {
 
 
 .menu-item .description {
-    position: absolute;
-    text-align: center;  /* Środkowanie tekstu */
+    position: absolute; /* find an alternative to absolute*/
+    text-align: center;  
     bottom: 0;
     left: 0;
     width: 100%;
@@ -199,7 +218,7 @@ p {
 
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     position: center;
-    z-index: 1; /* Zapobiega przykrywaniu tekstu */
+    z-index: 1; /* prevents from covering the text */
 }
 
 
@@ -208,18 +227,17 @@ p {
     transform: scale(1.1);
     border-radius: 20px;
     padding: 5px;
-    box-shadow: 0 10px 20px  rgba(0, 0, 0, 0.3); /* Dodaje cień */
+    box-shadow: 0 10px 20px  rgba(0, 0, 0, 0.3); /* adding shadow */
 }
 
 .menu-item:hover .description {
     opacity: 1;
     position: center;
-    text-align: center;  /* Środkowanie tekstu */
+    text-align: center;  /* centering the text */
 }
 
 .menu-item {
     position: relative;
-    overflow: hidden;
     align-items: center;
     text-align: center;
     gap: 20px;
@@ -228,21 +246,21 @@ p {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-/* Powiększenie nazwy dania */
+/* making the name of the dish bigger */
 .menu-item h5 {
-    font-size: 1.5em; /* Zwiększony rozmiar czcionki */
+    font-size: 1.5em; /* Bigger font's size */
     font-weight: bold;
     margin-top: 10px;
     position: relative;
-    z-index: 2; /* Zapewnia, że tekst jest zawsze na wierzchu */
+    z-index: 2; /* ensurign visibility of the text */
 }
 
 
 
 ul {
-    text-align: center; /* Centrowanie tekstu w li */
-    list-style-position: inside; /* Zapewnia, że punktory są wewnątrz */
-    list-style-position: inside; /* Przesuwa znaczniki listy (kropki, ikony) do wewnątrz */
+    text-align: center; /* centering the text in li */
+    list-style-position: inside; /* bullet point are inside */
+    list-style-position: inside; /* shifting the list's bulletpoints (dots, icons) inside */
 }
 
 .menu-description li {
@@ -250,15 +268,15 @@ ul {
 }
 
 .custom-btn {
-    background-color: #ff6a00; /* Pomarańczowy */
-    color: black; /* Tekst biały */
-    border: none; /* Usunięcie obramowania */
-    padding: 10px 20px; /* Dostosowanie odstępów */
-    border-radius: 5px; /* Zaokrąglenie */
+    background-color: #ff6a00; /* orange */
+    color: black; /* white texty */
+    border: none; /* deleting the frame */
+    padding: 10px 20px; 
+    border-radius: 5px; /* rounding the corners */
 }
 
 .custom-btn:hover {
-    background-color: #cc5500; /* Ciemniejszy pomarańczowy po najechaniu */
+    background-color: #cc5500; /* darker orange after hoverint the cursor */
 }
 
 
@@ -282,28 +300,6 @@ ul {
     color: #cc5500; /* Optional: Change color on hover */
 }
 
-
-.menu-item {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    position: relative;  /* Umożliwia poprawne nałożenie z-index */
-    overflow: hidden;    /* Zapobiega przesuwaniu elementów obok */
-    padding: 15px;
-    background: white;
-    text-align: center;
-    transition: transform 0.3s ease-in-out;
-    z-index: 1;  /* Default z-index */
-}
-
-
-
-.menu-item:hover {
-    transform: scale(1.05);
-    background: #ffc1a2b9;
-    z-index: 10;  /* Bring it to the front */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for depth */
-}
-
 .price {
     font-weight: bold;
     color: #d9534f;
@@ -321,7 +317,6 @@ ul {
     position: relative;
 }
 
-/* Kontener w stopce */
 .footer-container {
     display: flex;
     text-align: center;
@@ -339,20 +334,20 @@ ul {
 }
 
 .footer-image {
-    width: 0px; /* Dostosuj szerokość */
+    width: 0px; 
     height: 0px;
-    transition: all 0.3s ease-in-out; /* Płynna zmiana wielkości */
+    transition: all 0.3s ease-in-out;
 }
 
 .footer-image.left {
     align-self: flex-start;
-    width: 0px; /* Dopasuj rozmiar */
+    width: 0px; /* Adjust size */
     height: 0px;
 }
 
 .footer-image.right {
     align-self: flex-start;
-    width: auto; /* Dopasuj rozmiar */
+    width: auto; /* Adjust size */
     height: auto;
 }
 
