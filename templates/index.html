@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<!-- Tło dynamiczne -->
+<!-- Dynamic Background -->
 <div class="background">
-    <div class="background-layer"></div> <!-- Pierwsza warstwa tła -->
-    <div class="background-layer"></div> <!-- Druga warstwa tła -->
+    <div class="background-layer"></div> <!-- First background layer -->
+    <div class="background-layer"></div> <!-- Second background layer -->
 </div>
 
 <div class="text-center">
@@ -16,7 +16,7 @@
     </div>
 </div>
 
-<!-- Skrypt do zmiany tła -->
+<!-- Script for changing the background -->
 {% if background_script %}
  <script>
     const images = [
@@ -34,9 +34,9 @@
     ]
 
     let index = 0;
-    const layers = document.querySelectorAll('.background-layer');
+    const layers = document.querySelectorAll(".background-layer");
 
- //  **Początkowa konfiguracja – bez "mignięcia"**
+ //  **Initial configuratione**
 layers[0].style.backgroundImage = `url(${images[0]})`;
 layers[0].classList.add('show');  // Pierwsza warstwa widoczna
 layers[1].style.backgroundImage = `url(${images[1]})`;
@@ -44,8 +44,8 @@ layers[1].classList.add('hide');  // Druga warstwa ukryta
 
 function changeBackground() {
     // Wyznaczamy warstwy: aktywna (widoczna) i nowa (do zmiany)
-    let activeLayer = layers[index % 2];      // Aktywna warstwa (widoczna)
-    let newLayer = layers[(index + 1) % 2];   // Nowa warstwa (następne zdjęcie)
+    const activeLayer = layers[index % 2];      // Aktywna warstwa (widoczna)
+    const newLayer = layers[(index + 1) % 2];   // Nowa warstwa (następne zdjęcie)
 
     // **Najpierw ustawiamy nowe zdjęcie!**
     newLayer.style.backgroundImage = `url(${images[(index + 1) % images.length]})`;
@@ -56,8 +56,8 @@ function changeBackground() {
 
     // **Po animacji ukrywamy poprzednią warstwę**
     setTimeout(() => {
-        activeLayer.classList.remove('show');
-        activeLayer.classList.add('hide');
+        activeLayer.classList.remove("show");
+        activeLayer.classList.add("hide");
     }, 1000);  // Czas przejścia (dopasowany do CSS)
 
     // **Zmieniamy indeks na kolejne zdjęcie**
